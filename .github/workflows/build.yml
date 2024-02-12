@@ -6,10 +6,8 @@ on:
   release:
 
 jobs:
-  #
-  # Package jobs
-  #
-  package-3_12:
+  package:
+    environment: Actions
     uses: ./.github/workflows/docker.yml
     secrets:
       CI_REGISTRY_USER: ${{ secrets.CI_REGISTRY_USER }}
@@ -17,6 +15,3 @@ jobs:
       CI_REGISTRY_ORGANIZATION: ${{ secrets.CI_REGISTRY_ORGANIZATION }}
     with:
       version: '3.12'
-#
-# End Package Jobs
-#
