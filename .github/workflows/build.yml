@@ -11,7 +11,10 @@ jobs:
   #
   package-3_12:
     uses: ./.github/workflows/docker.yml
-    secrets: inherit
+    secrets:
+      CI_REGISTRY_USER: ${{ secrets.CI_REGISTRY_USER }}
+      CI_REGISTRY_TOKEN: ${{ secrets.CI_REGISTRY_TOKEN }}
+      CI_REGISTRY_ORGANIZATION: ${{ secrets.CI_REGISTRY_ORGANIZATION }}
     with:
       version: '3.12'
 #
