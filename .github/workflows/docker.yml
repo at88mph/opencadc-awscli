@@ -40,4 +40,5 @@ jobs:
         uses: docker/build-push-action@v3
         with:
           context: docker/${{ inputs.version }}
+          push: true
           tags: ${{ secrets.CI_REGISTRY_ORGANIZATION }}/awscli:${{ inputs.version }}-slim
