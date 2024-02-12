@@ -1,7 +1,7 @@
 # opencadc-awscli
 AWS Command line client
 
-Installs the `awscli` Python module for 3.5, 3.6, 3.7, and 3.8 (latest) running on Alpine Linux.  
+Installs the `awscli` Python module for 3.12 (latest) running on Debian (Bookworm) Slim.
 
 Available on Docker Hub:
 ```bash
@@ -18,5 +18,5 @@ Or start a shell and do a mass upload:
 docker run --rm --name awscli -ti -v /usr/src/data:/usr/src/data -v /home/user/.aws:/root/.aws opencadc/awscli sh
 
 >$ cd /usr/src/data
->$ aws s3 cp 2019-files/* s3://mybucket/
+>$ aws s3 cp my-files/* s3://mybucket/
 ```
