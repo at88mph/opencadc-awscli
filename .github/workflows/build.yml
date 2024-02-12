@@ -1,0 +1,19 @@
+name: OpenCADC AWS CLI Docker CI
+
+on:
+  pull_request:
+  push:
+  release:
+
+jobs:
+  #
+  # Package jobs
+  #
+  package-3_12:
+    uses: ./.github/workflows/docker.yml
+    secrets: inherit
+    with:
+      version: '3.12'
+#
+# End Package Jobs
+#
