@@ -10,18 +10,17 @@ on:
       version:
         type: string
         required: true
+    secrets:
       CI_REGISTRY_USER:
-        type: string
         required: true
       CI_REGISTRY_TOKEN:
-        type: string
         required: true
       CI_REGISTRY_ORGANIZATION:
-        type: string
         required: true
 
 jobs:
   docker-build-publish:
+    environment: docker-actions
     # github.ref == 'refs/heads/master' ||
     if: github.event_name == 'release'
     runs-on: ubuntu-latest
@@ -35,10 +34,10 @@ jobs:
       - name: Login to DockerHub
         uses: docker/login-action@v3
         with:
-          username: ${{ inputs.CI_REGISTRY_USER }}
-          password: ${{ inputs.CI_REGISTRY_TOKEN }}
+          username: ${{ secrets.CI_REGISTRY_USER }}
+          password: ${{ secrets.CI_REGISTRY_TOKEN }}
       - name: Build and push
         uses: docker/build-push-action@v3
         with:
           context: docker/${{ inputs.version }}
-          tags: ${{ inputs.CI_REGISTRY_ORGANIZATION }}/awscli:${{ inputs.version }}-slim
+          tags: ${{ secrets.CI_REGISTRY_ORGANIZATION }}/awscli:${{ inputs.version }}-slim

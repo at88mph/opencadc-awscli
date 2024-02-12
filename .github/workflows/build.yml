@@ -7,14 +7,10 @@ on:
 
 jobs:
   package:
-    environment: Actions
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout
-        uses: actions/checkout@v4
-      - uses: ./.github/workflows/docker.yml
-        with:
-          version: '3.12'
-          CI_REGISTRY_USER: ${{ secrets.CI_REGISTRY_USER }}
-          CI_REGISTRY_TOKEN: ${{ secrets.CI_REGISTRY_TOKEN }}
-          CI_REGISTRY_ORGANIZATION: ${{ secrets.CI_REGISTRY_ORGANIZATION }}
+    uses: ./.github/workflows/docker.yml
+    secrets:
+      CI_REGISTRY_USER: ${{ secrets.CI_REGISTRY_USER }}
+      CI_REGISTRY_TOKEN: ${{ secrets.CI_REGISTRY_TOKEN }}
+      CI_REGISTRY_ORGANIZATION: ${{ secrets.CI_REGISTRY_ORGANIZATION }}
+    with:
+      version: '3.12'
